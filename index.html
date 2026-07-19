@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I'm Sorry</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ffe6e6, #fff0f5);
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      display: inline-block;
+      background: #ff4d6d;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.6);
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin: 15px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    /* 🌸 FIXED FLOWERS */
+    .flower {
+      position: fixed;
+      top: -20px;
+      font-size: 28px;
+      animation: fall linear forwards;
+      z-index: 9999; /* 🔥 NOW VISIBLE */
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    .final-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ff4d6d;
+      color: white;
+      padding: 25px 40px;
+      border-radius: 20px;
+      font-size: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 5;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>I am Sorry...</h1>
+
+  <p>Mein sach ch sorry haan, and I'm ashamed of myself.</p>
+
+  <p>Tadi silence mainu bohot hurt kar rahi aa... mainu aadat nahi aa ignore hon di, kisse toh and especially tade toh.</p>
+
+  <p>i miss you talking with me and menu acha nhi lg rha ki tusi mere naal gl nhi kr rhe please aaj 4th day aa menu realize ho gaya aa and raat nu vi tadi kuch gallan karke massi lge bhout royi aa please bs karo mein tanu promise kardi aa aaj toh baad eho jehi gaal kadi nhi kahungi and if you want mein jokes marne vi band kar dungi mein bhout jayada sharminda aa but hun please phela vangu normal ho jao mera kisse chiz ch dil nhi lg reha knowing ti tusi mere naal naraz ho mera school vich vi study ch dil nhi lg reha please one last time maaf kardo mein aaj toh baad kadi eho jehi chiz nhi karungi and aapna bachpna vi chadh dungi just please mere naal dubara gallan and hassna shuru krdo your silence treatment is literally killing me</p>
+
+  <p>Menu aapni as a little sister consider karke maaf kardo please. I care for you a lot and this silence is killing me please forgive me i am sorry</p>
+
+  <h2>Will you talk to me and laugh with me again?</h2>
+
+  <button onclick="yesClicked()">Yes ❤️</button>
+  <button id="noBtn">No 😭</button>
+</div>
+
+<div class="final-message" id="finalMsg">
+  Thank you so so so much ❤️<br>
+  I’ll never disappoint you again.
+</div>
+
+<script>
+let flowerInterval; // 🔥 prevent multiple intervals
+
+function createFlower() {
+  let flower = document.createElement("div");
+
+  const flowers = ["🌸","🌺","🌷","💮"];
+  flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+
+  flower.classList.add("flower");
+
+  flower.style.left = Math.random() * window.innerWidth + "px";
+  flower.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+  document.body.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 5000);
+}
+
+function yesClicked() {
+  document.getElementById("finalMsg").style.display = "block";
+
+  // 🌸 instant burst
+  for (let i = 0; i < 40; i++) {
+    createFlower();
+  }
+
+  // 🌸 continuous rain (only once)
+  if (!flowerInterval) {
+    flowerInterval = setInterval(createFlower, 120);
+  }
+}
+
+// ❌ runaway NO button
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  moveButton();
+});
+
+function moveButton() {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
